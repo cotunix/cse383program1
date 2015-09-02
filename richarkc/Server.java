@@ -75,14 +75,20 @@ public class Server {
 				if (newmsg.startsWith("HELLO")) {
 					if (!(clientList.contains(pkt.getSocketAddress()))) {
 						clientList.add(pkt.getSocketAddress());
-						sendMessage("HELLO-RESPONSE", pkt.getSocketAddress());
+						sendMessage("HELLO-RESPONSE","", pkt.getSocketAddress());
 					}
 				
 						
 				}
 				
 				else if (newmsg.startsWith("MESSAGE")) {
-					System.out.println(dis.readUTF());
+					sendAll(dis.readUTF());
+				}
+
+				
+				else if (newmsg.startsWith("GOODBYE")){
+					sendMessage("GOODBYE-RESPONSE","",pkt.getSocketAddress());
+					clientList.remove(pkt.getSocketAddress());
 				}
 					
 
@@ -92,17 +98,26 @@ public class Server {
 		}
 	}
 
-	public void sendMessage(String msg, SocketAddress add) throws IOException {
+	public void sendMessage(String msg, String msg2, SocketAddress add) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		DataOutputStream dos = new DataOutputStream(bos);
 		dos.writeUTF(msg);
+		dos.writeUTF(msg2);
 		byte data[] = bos.toByteArray();
 		DatagramPacket sendResponse = new DatagramPacket(data,data.length,add);
 		sock.send(sendResponse);
 	}
 
-	public void sendAll(String msg){
-					
+	public void sendAll(String msg) throws IOException {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		DataOutputStream dos = new DataOutputStream(bos);
+		dos.writeUTF("MESSAGE");
+		dos.writeUTF(msg);
+		byte data[] = bos.toByteArray();
+		for (SocketAddress i : clientList) {
+			DatagramPacket sendResponse = new DatagramPacket(data, data.length, i);	
+			sock.send(sendResponse);
+		}	
 
 	}
 
