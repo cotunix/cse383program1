@@ -80,6 +80,10 @@ public class Server {
 				
 						
 				}
+				
+				else if (newmsg.startsWith("MESSAGE")) {
+					System.out.println(dis.readUTF());
+				}
 					
 
 			} catch (IOException err) {
@@ -87,13 +91,19 @@ public class Server {
 			}
 		}
 	}
+
 	public void sendMessage(String msg, SocketAddress add) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		DataOutputStream dos = new DataOutputStream(bos);
 		dos.writeUTF(msg);
 		byte data[] = bos.toByteArray();
-		DatagramPacket sendResponse = new DatagramPacket(data,data.length,pkt.getSocketAddress());
+		DatagramPacket sendResponse = new DatagramPacket(data,data.length,add);
 		sock.send(sendResponse);
+	}
+
+	public void sendAll(String msg){
+					
+
 	}
 
 }
