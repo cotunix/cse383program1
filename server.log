@@ -1,0 +1,17 @@
+2015-09-245 20:36:39 Server Starting
+2015-09-245 20:36:39 Waiting for packet
+2015-09-245 20:39:50 Client connected: /127.0.0.1:49839
+2015-09-245 20:39:50 Waiting for packet
+2015-09-245 20:39:52 Received message from: /127.0.0.1:49839 no
+2015-09-245 20:39:52 Sent message to /127.0.0.1:49839 no
+2015-09-245 20:39:52 Waiting for packet
+2015-09-245 20:39:54 Client connected: /127.0.0.1:32948
+2015-09-245 20:39:54 Waiting for packet
+2015-09-245 20:39:55 Received message from: /127.0.0.1:32948 no
+2015-09-245 20:39:55 Sent message to /127.0.0.1:49839 no
+2015-09-245 20:39:55 Sent message to /127.0.0.1:32948 no
+2015-09-245 20:39:55 Waiting for packet
+2015-09-245 20:39:57 Received message from: /127.0.0.1:32948 asmfosdf
+2015-09-245 20:39:57 Sent message to /127.0.0.1:49839 asmfosdf
+2015-09-245 20:39:57 Sent message to /127.0.0.1:32948 asmfosdf
+2015-09-245 20:39:57 Waiting for packet
